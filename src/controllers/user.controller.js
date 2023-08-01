@@ -8,19 +8,19 @@ const validateUser = (req, res, next) => {
 
   if (displayName.length < 8) {
     return res.status(400).json({
-      message: 'displayName length must be at least 8 characters long',
+      message: '\"displayName\" length must be at least 8 characters long',
     });
   }
 
   if (!email.includes('@') || !email.includes('.com')) {
     return res.status(400).json({
-      message: 'email must be a valid email',
+      message: '\"email\" must be a valid email',
     });
   }
 
   if (password.length < 6) {
     return res.status(400).json({
-      message: 'password length must be at least 6 characters long',
+      message: '\"password\" length must be at least 6 characters long',
     });
   }
 
@@ -32,7 +32,7 @@ const createUser = async (req, res) => {
 
   const user = await UserService.getByEmail(email);
   if (user) {
-    return res.status(400).json({
+    return res.status(409).json({
       message: 'User already registered',
     });
   }
