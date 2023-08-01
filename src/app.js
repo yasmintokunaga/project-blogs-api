@@ -1,5 +1,5 @@
 const express = require('express');
-
+const login = require('./controllers/login.controller');
 // ...
 
 const app = express();
@@ -12,6 +12,8 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 // ...
+
+app.post('/login', login.autenticationToken);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
