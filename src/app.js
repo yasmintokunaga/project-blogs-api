@@ -20,6 +20,7 @@ app.post('/login', login.autenticationToken);
 app.post('/user', user.validateUser, user.createUser);
 
 app.get('/user', validateJWT, user.getAll);
+app.get('/user/:id', validateJWT, user.getById);
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
