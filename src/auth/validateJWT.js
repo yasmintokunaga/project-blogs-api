@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
   const bearerToken = req.header('Authorization');
 
   if (!bearerToken) {
-    return res.status(401).json({ error: 'Token not found' });
+    return res.status(401).json({ message: 'Token not found' });
   }
 
   const token = extractToken(bearerToken);
