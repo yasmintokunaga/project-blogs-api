@@ -17,13 +17,17 @@ module.exports = async (req, res, next) => {
 
   const token = extractToken(bearerToken);
 
-  const decoded = jwt.verify(token, secret);
+  try {
+    const decoded = jwt.verify(token, secret);
+  
+    const user = await UserService.getByEmail(decoded.data.email);
 
-  const user = await UserService.getByEmail(decoded.data.email);
-
-  if (!user) {
+    if (!user) {
+      return res.status(401).json({ message: 'Expired or invalid token' });
+    }
+    req.user = user;
+    next();
+  } catch (err) {
     return res.status(401).json({ message: 'Expired or invalid token' });
   }
-  req.user = user;
-  next();
 };
