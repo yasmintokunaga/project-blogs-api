@@ -9,6 +9,7 @@ function extractToken(bearerToken) {
 }
 
 module.exports = async (req, res, next) => {
+  console.log('teste');
   const bearerToken = req.header('Authorization');
 
   if (!bearerToken) {

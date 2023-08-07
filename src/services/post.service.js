@@ -1,23 +1,21 @@
 const { BlogPost, PostCategory, User, Category } = require('../models');
 
 const createPost = async (title, content, userId, categoryIds) => {
+  const dateNow = new Date();
+  const dateNowString = dateNow.toISOString();
   const newPost = await BlogPost.create(
     {
       title,
       content,
       userId,
-      published: new Date(),
-      updated: new Date(),
+      published: dateNowString,
+      updated: dateNowString,
     },
   );
 
-  const postCategoryPromises = categoryIds.map((categoryId) =>
-    PostCategory.create({
-      postId: newPost.id,
-      categoryId,
-    }));
-
-  await Promise.all(postCategoryPromises);
+  const postId = newPost.id;
+  const insertsPostCategory = categoryIds.map((categoryId) => ({ postId, categoryId }));
+  await PostCategory.bulkCreate(insertsPostCategory);
 
   return newPost;
 };

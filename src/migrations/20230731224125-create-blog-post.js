@@ -29,10 +29,10 @@ module.exports = {
         },
       },
       published: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       updated: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
     });
   },

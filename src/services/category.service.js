@@ -13,7 +13,7 @@ const getAll = async () => {
 
 const getById = async (categoryId) => {
   const category = await Category.findOne({
-    where: { categoryId },
+    where: { id: categoryId },
   });
   return category;
 };
