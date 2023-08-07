@@ -30,6 +30,8 @@ app.get('/categories', validateJWT, category.getAll);
 app.post('/post', validateJWT, post.validatePost, post.createPost);
 app.get('/post', validateJWT, post.getAll);
 app.get('/post/:id', validateJWT, post.getById);
+app.put('/post/:id', validateJWT, post.updatePost);
+
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
