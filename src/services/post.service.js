@@ -1,15 +1,15 @@
 const { BlogPost, PostCategory, User, Category } = require('../models');
 
 const createPost = async (title, content, userId, categoryIds) => {
-  const dateNow = new Date();
-  const dateNowString = dateNow.toISOString();
+  // const dateNow = new Date();
+  // const dateNowString = dateNow.toISOString();
   const newPost = await BlogPost.create(
     {
       title,
       content,
       userId,
-      published: dateNowString,
-      updated: dateNowString,
+      // published: dateNowString,
+      // updated: dateNowString,
     },
   );
 
