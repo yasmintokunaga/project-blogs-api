@@ -23,6 +23,7 @@ app.post('/user', user.validateUser, user.createUser);
 
 app.get('/user', validateJWT, user.getAll);
 app.get('/user/:id', validateJWT, user.getById);
+app.delete('/user/me', validateJWT, user.deleteUser);
 
 app.post('/categories', validateJWT, category.createCategory);
 app.get('/categories', validateJWT, category.getAll);
