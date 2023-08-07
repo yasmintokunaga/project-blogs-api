@@ -31,6 +31,7 @@ app.post('/post', validateJWT, post.validatePost, post.createPost);
 app.get('/post', validateJWT, post.getAll);
 app.get('/post/:id', validateJWT, post.getById);
 app.put('/post/:id', validateJWT, post.updatePost);
+app.delete('/post/:id', validateJWT, post.deletePost);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
