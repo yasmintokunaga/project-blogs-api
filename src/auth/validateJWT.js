@@ -5,7 +5,8 @@ const UserService = require('../services/user.service');
 const secret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 
 function extractToken(bearerToken) {
-  return bearerToken.split(' ')[1];
+  const splitToken = bearerToken.split(' ');
+  return splitToken.length > 0 ? splitToken[1] : bearerToken;
 }
 
 module.exports = async (req, res, next) => {
