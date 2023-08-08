@@ -66,7 +66,11 @@ const searchPosts = async (searchTerm) => {
           { title: { [Op.like]: `%${searchTerm}%` } },
           { content: { [Op.like]: `%${searchTerm}%` } },
         ],
-      },      
+      },
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],     
     },
   );
 
