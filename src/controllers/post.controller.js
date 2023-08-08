@@ -81,6 +81,14 @@ const deletePost = async (req, res) => {
   return res.status(204).json();
 };
 
+const searchPosts = async (req, res) => {
+  const { q } = req.query;
+  console.log(q);
+
+  const posts = await Post.searchPosts(q);
+  return res.status(200).json(posts);
+};
+
 module.exports = {
   validatePost,
   createPost,
@@ -88,4 +96,5 @@ module.exports = {
   getById,
   updatePost,
   deletePost,
+  searchPosts,
 };

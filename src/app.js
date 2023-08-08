@@ -30,6 +30,7 @@ app.get('/categories', validateJWT, category.getAll);
 
 app.post('/post', validateJWT, post.validatePost, post.createPost);
 app.get('/post', validateJWT, post.getAll);
+app.get('/post/search', validateJWT, post.searchPosts);
 app.get('/post/:id', validateJWT, post.getById);
 app.put('/post/:id', validateJWT, post.updatePost);
 app.delete('/post/:id', validateJWT, post.deletePost);
